@@ -3,7 +3,7 @@ import { useState } from "react";
 import classes from "./unique-app.module.css";
 
 export default function App() {
-  const [text, setText] = useState("Antony");
+  const [text, setText] = useState("");
 
   const [todos, setTodos] = useState([
     { id: 1, text: "Learn React", done: true },
@@ -21,6 +21,18 @@ export default function App() {
     setTodos([...todos, { id: maxId + 1, text, done: false }]);
 
     setText("");
+  };
+
+  const handleSpanClick = (id) => (event) => {
+    setTodos(
+      todos.map((todo) => {
+        if (todo.id === id) {
+          return { ...todo, done: !todo.done };
+        }
+
+        return todo;
+      })
+    );
   };
 
   const handleButtonClick = (id) => (event) => {
@@ -41,7 +53,7 @@ export default function App() {
       <ul>
         {todos.map(({ id, text, done }) => (
           <li key={id} className={done ? classes.done : null}>
-            {text}
+            <span onClick={handleSpanClick(id)}>{text}</span>
             <button onClick={handleButtonClick(id)}>x</button>
           </li>
         ))}
