@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import classes from "./unique-app.module.css";
+import classes from "./app.module.css";
 
 export default function App() {
   const [text, setText] = useState("");
