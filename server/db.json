@@ -1,31 +1,17 @@
 {
   "todos": [
     {
-      "id": 1,
-      "text": "Learn React",
-      "done": true
-    },
-    {
-      "id": 2,
-      "text": "Seek for a job now!",
-      "done": true
-    },
-    {
-      "id": 3,
-      "text": "Forget everthing"
-    },
-    {
       "text": "test",
-      "done": false,
+      "done": true,
       "id": 4
     },
     {
-      "text": "test",
-      "done": false,
+      "text": "new todos",
+      "done": true,
       "id": 5
     },
     {
-      "text": "ok",
+      "text": "sd",
       "done": false,
       "id": 6
     }

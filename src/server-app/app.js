@@ -3,13 +3,14 @@ import { useEffect, useState } from "react";
 import List from "./list";
 import Form from "./form";
 
+import * as api from "./api";
+
 export default function App() {
   const [todos, setTodos] = useState([]);
 
   const fetchTodos = async () => {
-    const response = await fetch("http://localhost:3000/todos");
-    const body = await response.json();
-    setTodos(body);
+    const todos = await api.fetchAll("todos");
+    setTodos(todos);
   };
 
   useEffect(() => {
@@ -17,28 +18,20 @@ export default function App() {
   }, []);
 
   const handleSubmit = async (text) => {
-    // const maxId = todos.length ? todos[todos.length - 1].id : 0;
-    // setTodos([...todos, { id: maxId + 1, text, done: false }]);
-    await fetch("http://localhost:3000/todos", {
-      method: "POST",
-      headers: {
-        "Content-type": "application/json",
-      },
-      body: JSON.stringify({ text, done: false }),
-    });
+    await api.create("todos", { text, done: false });
+
     fetchTodos();
   };
 
-  const handleSpanClick = (id) => {
-    setTodos(
-      todos.map((todo) =>
-        todo.id === id ? { ...todo, done: !todo.done } : todo
-      )
-    );
+  const handleSpanClick = async (id) => {
+    const todo = todos.find((todo) => todo.id === id);
+    await api.update("todos", id, { done: !todo.done });
+    fetchTodos();
   };
 
-  const handleButtonClick = (id) => {
-    setTodos(todos.filter((todo) => todo.id !== id));
+  const handleButtonClick = async (id) => {
+    await api.remove("todos", id);
+    fetchTodos();
   };
 
   return (
