@@ -1,20 +1,20 @@
+import { sum } from "./calculator";
+
 //behavior-driven development
 
-it("should add two numbers", () => {
-  //given
+describe("Calculator", () => {
+  it("should add two numbers", () => {
+    //given
 
-  const a = 2;
-  const b = 3;
+    const a = 2;
+    const b = 3;
 
-  function sum(x, y) {
-    return x + y;
-  }
+    //when
 
-  //when
+    const result = sum(a, b);
 
-  const result = sum(a, b);
+    //then
 
-  //then
-
-  expect(result).toBe(5);
+    expect(result).toBe(5);
+  });
 });
