@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import App from "./server-app";
+import App from "./redux-toolkit-thunk-app";
 
 ReactDOM.render(
   <React.StrictMode>

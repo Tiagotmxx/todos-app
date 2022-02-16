@@ -3,14 +3,20 @@ import List from "./list";
 import Form from "./form";
 import {
   addTodo,
+  fetchTodos,
   removeTodo,
   selectTodos,
   toggleDone,
 } from "./bussiness-logic/todos";
+import { useEffect } from "react";
 
 export default function App() {
   const todos = useSelector(selectTodos);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchTodos());
+  }, [dispatch]);
 
   const handleSubmit = (text) => dispatch(addTodo(text));
 

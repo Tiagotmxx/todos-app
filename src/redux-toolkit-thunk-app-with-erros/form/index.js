@@ -1,5 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
-import { selectText, setText } from "../bussiness-logic/todos";
+import { selectText } from "../bussiness-logic/todos";
+import { setText } from "../bussiness-logic/todos/text";
+
 import FormComponent from "./form";
 
 //Container component

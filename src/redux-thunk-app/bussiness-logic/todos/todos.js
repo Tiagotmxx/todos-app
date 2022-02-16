@@ -16,6 +16,9 @@ export default function todos(state = [], action) {
     case Type.REMOVE_TODO:
       return state.filter((todo) => todo.id !== payload);
 
+    case Type.SET_TODOS:
+      return payload;
+
     default:
       return state;
   }
